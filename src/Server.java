@@ -37,6 +37,7 @@ public class Server {
 				getWriter(socket).println(pins.getCurrentState());
 				break;
 			default: 
+				socket.close();
 				break;
 			}
 			
