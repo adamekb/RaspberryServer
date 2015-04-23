@@ -28,11 +28,12 @@ public class Gpio {
 					try {
 						String currentTime = format.format(new Date());
 						Date now = format.parse(currentTime);
-						for (Timer i : timers) {
-							long difference = now.getTime() - i.getTime().getTime();
+						for (int i = 0; i < timers.size(); i++) {
+							long difference = now.getTime() - timers.get(i).getTime().getTime();
 							if(difference >= 0) {
-								toggle(i.getString());
+								toggle(timers.get(i).getString());
 								timers.remove(i);
+								i--;
 							}
 						}
 
