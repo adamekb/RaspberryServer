@@ -21,6 +21,7 @@ public class Server {
 			BufferedReader input = new BufferedReader(reader);
 
 			String signal = input.readLine();
+			System.out.println(signal);
 			
 			switch (signal) {
 			case "TOGGLE":
@@ -35,6 +36,7 @@ public class Server {
 				break;
 			case "INITIATE":
 				getWriter(socket).println(pins.getCurrentState());
+				System.out.println("Current state: " + pins.getCurrentState());
 				break;
 			default:
 				break;

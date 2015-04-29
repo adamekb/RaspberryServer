@@ -41,7 +41,7 @@ public class Gpio {
 						e.printStackTrace();
 					}
 					try {
-						Thread.sleep(60000);
+						Thread.sleep(30000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -77,13 +77,15 @@ public class Gpio {
 		case "unit4 OFF":
 			unit4.low();
 			break;
-		} //unit1 ON/OFF xx.xx
+		}
 	}
 
 	public void setTimer(BufferedReader input) {
 		try {
 			String action = input.readLine();
 			String time = input.readLine();
+			System.out.println(action);
+			System.out.println(time);
 
 			Date time2 = format.parse(time);
 			Timer timer = new Timer(time2, action);
@@ -98,8 +100,8 @@ public class Gpio {
 	public void removeTimer(BufferedReader input) {
 
 		try {
-			String time = input.readLine();
 			String action = input.readLine();
+			String time = input.readLine();
 			Date time2 = format.parse(time);
 
 			for (Timer i : timers) {
