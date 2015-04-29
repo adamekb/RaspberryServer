@@ -29,7 +29,7 @@ public class Gpio {
 						String currentTime = format.format(new Date());
 						Date now = format.parse(currentTime);
 						for (int i = 0; i < timers.size(); i++) {
-							System.out.println("Current time: " + currentTime);
+							//System.out.println("Current time: " + currentTime);
 							long difference = now.getTime() - timers.get(i).getTime().getTime();
 							if(difference >= 0) {
 								toggle(timers.get(i).getString());
