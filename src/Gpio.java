@@ -53,37 +53,37 @@ public class Gpio {
 
 	public void toggle (String signal) {
 		switch (signal) {
-		case "ON unit 1":
+		case "unit1 ON":
 			unit1.high();
 			break;
-		case "ON unit 2":
+		case "unit2 ON":
 			unit2.high();
 			break;
-		case "ON unit 3":
+		case "unit3 ON":
 			unit3.high();
 			break;
-		case "ON unit 4":
+		case "unit4 ON":
 			unit4.high();
 			break;
-		case "OFF unit 1":
+		case "unit1 OFF":
 			unit1.low();
 			break;
-		case "OFF unit 2":
+		case "unit2 OFF":
 			unit2.low();
 			break;
-		case "OFF unit 3":
+		case "unit3 OFF":
 			unit3.low();
 			break;
-		case "OFF unit 4":
+		case "unit4 OFF":
 			unit4.low();
 			break;
-		}
+		} //unit1 ON/OFF xx.xx
 	}
 
 	public void setTimer(BufferedReader input) {
 		try {
-			String time = input.readLine();
 			String action = input.readLine();
+			String time = input.readLine();
 
 			Date time2 = format.parse(time);
 			Timer timer = new Timer(time2, action);

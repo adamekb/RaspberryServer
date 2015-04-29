@@ -36,8 +36,7 @@ public class Server {
 			case "INITIATE":
 				getWriter(socket).println(pins.getCurrentState());
 				break;
-			default: 
-				socket.close();
+			default:
 				break;
 			}
 			
