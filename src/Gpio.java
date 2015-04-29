@@ -125,7 +125,7 @@ public class Gpio {
 		String four = unit4.getState().toString();
 		
 		for (Timer i : timers) {
-			timersString = timersString + " " + i.getString() + " " + i.getTime();
+			timersString = timersString + " " + i.getString() + " " + i.getTime().getTime();
 		}
 		
 		return one + " " + two + " " + three + " " + four + " " + timersString;
