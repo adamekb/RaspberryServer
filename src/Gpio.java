@@ -29,6 +29,7 @@ public class Gpio {
 						String currentTime = format.format(new Date());
 						Date now = format.parse(currentTime);
 						for (int i = 0; i < timers.size(); i++) {
+							System.out.println("Current time: " + currentTime);
 							long difference = now.getTime() - timers.get(i).getTime().getTime();
 							if(difference >= 0) {
 								toggle(timers.get(i).getString());
@@ -119,9 +120,9 @@ public class Gpio {
 	public String getCurrentState() {
 		String timersString = null;
 		String one = unit1.getState().toString();
-		String two = unit1.getState().toString();
-		String three = unit1.getState().toString();
-		String four = unit1.getState().toString();
+		String two = unit2.getState().toString();
+		String three = unit3.getState().toString();
+		String four = unit4.getState().toString();
 		
 		for (Timer i : timers) {
 			timersString = timersString + " " + i.getString() + " " + i.getTime();
