@@ -19,31 +19,29 @@ public class Server {
 
 			InputStreamReader reader = new InputStreamReader(socket.getInputStream());
 			BufferedReader input = new BufferedReader(reader);
-			String signal = " ";
-			if (input != null) {
-				signal = input.readLine();
+
+			String signal;
+			if ((signal = input.readLine()) != null) {
+
+				switch (signal) {
+				case "TOGGLE":
+					String string = input.readLine();
+					pins.toggle(string);
+					break;
+				case "TIMER":
+					pins.setTimer(input);
+					break;
+				case "REMOVE":
+					pins.removeTimer(input);
+					break;
+				case "INITIATE":
+					getWriter(socket).println(pins.getCurrentState());
+					System.out.println("Current state: " + pins.getCurrentState());
+					break;
+				default:
+					break;
+				}
 			}
-			System.out.println("mottaget: " + signal);
-			
-			switch (signal) {
-			case "TOGGLE":
-				String string = input.readLine();
-				pins.toggle(string);
-				break;
-			case "TIMER":
-				pins.setTimer(input);
-				break;
-			case "REMOVE":
-				pins.removeTimer(input);
-				break;
-			case "INITIATE":
-				getWriter(socket).println(pins.getCurrentState());
-				System.out.println("Current state: " + pins.getCurrentState());
-				break;
-			default:
-				break;
-			}
-			
 			socket.close();
 		}
 	}
