@@ -29,8 +29,8 @@ public class Gpio {
 						String currentTime = format.format(new Date());
 						Date now = format.parse(currentTime);
 						for (int i = 0; i < timers.size(); i++) {
-							//System.out.println("Current time: " + currentTime);
-							long difference = now.getTime() - timers.get(i).getTime().getTime();
+							Date time = format.parse(timers.get(i).getTime());
+							long difference = now.getTime() - time.getTime();
 							if(difference >= 0) {
 								toggle(timers.get(i).getString());
 								timers.remove(i);
@@ -88,12 +88,11 @@ public class Gpio {
 			System.out.println(action);
 			System.out.println(time);
 
-			Date time2 = format.parse(time);
-			Timer timer = new Timer(time2, action);
+			Timer timer = new Timer(time, action);
 
 			timers.add(timer);
 
-		} catch (IOException | ParseException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
