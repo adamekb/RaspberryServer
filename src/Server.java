@@ -21,7 +21,7 @@ public class Server {
 			BufferedReader input = new BufferedReader(reader);
 
 			String signal = input.readLine();
-			System.out.println(signal);
+			System.out.println("mottaget: " + signal);
 			
 			switch (signal) {
 			case "TOGGLE":
