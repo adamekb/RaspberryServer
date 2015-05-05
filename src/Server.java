@@ -19,8 +19,10 @@ public class Server {
 
 			InputStreamReader reader = new InputStreamReader(socket.getInputStream());
 			BufferedReader input = new BufferedReader(reader);
-
-			String signal = input.readLine();
+			String signal = " ";
+			if (input != null) {
+				signal = input.readLine();
+			}
 			System.out.println("mottaget: " + signal);
 			
 			switch (signal) {
