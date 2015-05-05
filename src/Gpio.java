@@ -117,7 +117,7 @@ public class Gpio {
 	}
 
 	public String getCurrentState() {
-		String timersString = null;
+		String timersString = "";
 		String one = unit1.getState().toString();
 		String two = unit2.getState().toString();
 		String three = unit3.getState().toString();
