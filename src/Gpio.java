@@ -19,6 +19,7 @@ public class Gpio {
 	private GpioPinDigitalOutput unit3 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03);
 	private GpioPinDigitalOutput unit4 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04);
 	private SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+	private String timersString;
 
 	public Gpio () {
 		Thread thread = new Thread(){
@@ -117,7 +118,6 @@ public class Gpio {
 	}
 
 	public String getCurrentState() {
-		String timersString = "";
 		String one = unit1.getState().toString();
 		String two = unit2.getState().toString();
 		String three = unit3.getState().toString();
