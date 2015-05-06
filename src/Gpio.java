@@ -100,8 +100,10 @@ public class Gpio {
 	public void removeTimer(BufferedReader input) {
 
 		try {
-			String action = input.readLine();
-			String time = input.readLine();
+			String string = input.readLine();
+			String array[] = string.split(" ");
+			String action = array[0] + " " + array[1];
+			String time = array[2];
 
 			for (Timer i : timers) {
 				if(i.getString().equals(action) || i.getTime().equals(time)) {
