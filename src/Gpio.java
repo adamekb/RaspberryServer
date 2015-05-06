@@ -19,17 +19,18 @@ public class Gpio {
 	private GpioPinDigitalOutput unit3 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03);
 	private GpioPinDigitalOutput unit4 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04);
 	private SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+	private String timersString;
 
 	public Gpio () {
 		Thread thread = new Thread(){
 			public void run(){
 				while(true) {
-
 					try {
 						String currentTime = format.format(new Date());
 						Date now = format.parse(currentTime);
 						for (int i = 0; i < timers.size(); i++) {
-							long difference = now.getTime() - timers.get(i).getTime().getTime();
+							Date time = format.parse(timers.get(i).getTime());
+							long difference = now.getTime() - time.getTime();
 							if(difference >= 0) {
 								toggle(timers.get(i).getString());
 								timers.remove(i);
@@ -87,12 +88,11 @@ public class Gpio {
 			System.out.println(action);
 			System.out.println(time);
 
-			Date time2 = format.parse(time);
-			Timer timer = new Timer(time2, action);
+			Timer timer = new Timer(time, action);
 
 			timers.add(timer);
 
-		} catch (IOException | ParseException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -102,29 +102,31 @@ public class Gpio {
 		try {
 			String action = input.readLine();
 			String time = input.readLine();
-			Date time2 = format.parse(time);
 
 			for (Timer i : timers) {
-				if(i.getString().equals(action) || i.getTime().equals(time2)) {
+				if(i.getString().equals(action) || i.getTime().equals(time)) {
 					timers.remove(i);
 					break;
 				}
 			}
 
-		} catch (ParseException | IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public String getCurrentState() {
-		String timersString = null;
 		String one = unit1.getState().toString();
 		String two = unit2.getState().toString();
 		String three = unit3.getState().toString();
 		String four = unit4.getState().toString();
 		
 		for (Timer i : timers) {
-			timersString = timersString + " " + i.getString() + " " + i.getTime().toString().substring(11, 16);
+			if (timersString == null) {
+				timersString = i.getString() + " " + i.getTime();
+			} else {
+				timersString = timersString + " " + i.getString() + " " + i.getTime();
+			}
 		}
 		
 		return one + " " + two + " " + three + " " + four + " " + timersString;

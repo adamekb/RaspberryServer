@@ -1,16 +1,14 @@
-import java.util.Date;
-
 
 public class Timer {
-	private Date time;
-	private String string;
 	
-	public Timer (Date time, String string) {
+	private String string, time;
+	
+	public Timer (String time, String string) {
 		this.time = time;
 		this.string = string;
 	}
 	
-	public Date getTime() {
+	public String getTime() {
 		return time;
 	}
 	
