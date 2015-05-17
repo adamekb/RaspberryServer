@@ -35,7 +35,8 @@ public class Server {
 					pins.removeTimer(input);
 					break;
 				case "INITIATE":
-					getWriter(socket).println(pins.getCurrentState());
+					PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+					writer.println(pins.getCurrentState());
 					System.out.println("Current state: " + pins.getCurrentState());
 					break;
 				default:
@@ -44,15 +45,5 @@ public class Server {
 			}
 			socket.close();
 		}
-	}
-
-	private static PrintWriter getWriter(Socket socket) {
-		PrintWriter writer = null;
-		try {
-			writer = new PrintWriter(socket.getOutputStream(), true);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return writer;
 	}
 }

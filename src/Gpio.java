@@ -14,10 +14,10 @@ import com.pi4j.io.gpio.RaspiPin;
 public class Gpio {
 	private ArrayList<Timer> timers = new ArrayList<Timer>();
 	private GpioController gpio = GpioFactory.getInstance();
-	private GpioPinDigitalOutput unit1 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01);
-	private GpioPinDigitalOutput unit2 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02);
-	private GpioPinDigitalOutput unit3 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03);
-	private GpioPinDigitalOutput unit4 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04);
+	public GpioPinDigitalOutput unit1 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01);
+	public GpioPinDigitalOutput unit2 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02);
+	public GpioPinDigitalOutput unit3 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03);
+	public GpioPinDigitalOutput unit4 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04);
 	private SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 	private String timersString;
 
