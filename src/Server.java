@@ -22,7 +22,7 @@ public class Server {
 
 			String signal;
 			if ((signal = input.readLine()) != null) {
-
+				System.out.println(signal);
 				switch (signal) {
 				case "TOGGLE":
 					String string = input.readLine();

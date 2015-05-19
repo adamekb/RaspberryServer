@@ -103,7 +103,9 @@ public class Gpio {
 			String string = input.readLine();
 			String array[] = string.split(" ");
 			String action = array[0] + " " + array[1];
+			System.out.println("action: " + action);
 			String time = array[2];
+			System.out.println("time: " + time);
 
 			for (Timer i : timers) {
 				if(i.getString().equals(action) || i.getTime().equals(time)) {
