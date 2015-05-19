@@ -108,8 +108,9 @@ public class Gpio {
 			System.out.println("time: " + time);
 
 			for (Timer i : timers) {
-				if(i.getString().equals(action) || i.getTime().equals(time)) {
+				if(i.getString().equals(action) && i.getTime().equals(time)) {
 					timers.remove(i);
+					System.out.println("EN TIMER HAR TAGITS BORT!!");
 					break;
 				}
 			}
